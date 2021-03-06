@@ -12,6 +12,6 @@ services:
     project: Blazor.Host\Blazor.Host.csproj
     
   # Backend
-  - name: Backend
+  - name: backend
     project: Backend\Backend.csproj
 
