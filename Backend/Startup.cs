@@ -26,6 +26,15 @@ namespace Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.SetIsOriginAllowed(origin =>
+                        new Uri(origin).Host == Configuration.GetServiceUri("blazor-host:https")?.Host
+                    );
+                });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -47,6 +56,8 @@ namespace Backend
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
