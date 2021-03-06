@@ -24,16 +24,23 @@ namespace Blazor.Host
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseWebAssemblyDebugging();
+            }
+            else
+            {
+                app.UseStatusCodePages();
+                app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
+            app.UseBlazorFrameworkFiles();
+            app.UseStaticFiles();
+            
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapFallbackToFile("index.html");
             });
         }
     }
