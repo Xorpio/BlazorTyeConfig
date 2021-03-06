@@ -4,12 +4,11 @@ Sample project showing how blazor can read tye configuration when hosted on a as
 # Setup
 The setup consist of 3 projects
 
-## Backend
-Simple asp.net project created with:
-`dotnet new webapi`
+* Backend - Simple asp.net webapi
+* Blazor - Blazor project
+* Blazor-Host - asp.net project hosting blazor
 
-## Blazor
-Blazor project
+Run the sample with:
+`tye.run`
 
-## Blazor.Host
-asp.net project hosting blazor
+Go to http://localhost:8000

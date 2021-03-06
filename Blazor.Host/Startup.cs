@@ -53,8 +53,8 @@ namespace Blazor.Host
                 {
                     await context.Response.WriteAsJsonAsync(new
                     {
-                        auth = Configuration.GetServiceUri("backend:https"),
-                        admin = Configuration.GetServiceUri("blazor-host")
+                        backend = Configuration.GetServiceUri("backend:https"),
+                        blazorHost = Configuration.GetServiceUri("blazor-host")
                     });
                 });
             });

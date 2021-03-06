@@ -1,5 +1,6 @@
 ﻿@page "/fetchdata"
 @inject HttpClient Http
+@inject IEndpointService endpointService
 
 <h1>Weather forecast</h1>
 
@@ -39,7 +40,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        var url = await endpointService.GetBackend();
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>(url + "WeatherForecast");
     }
 
     public class WeatherForecast
